@@ -5,22 +5,12 @@ from game_board import game_board
 from board import board
 from fill_field import fill_field
 from check_win import check_win
+from board_handler import get_board_size
 
 new_game = True
 os.system('clear')
 while new_game == True:
-    C = 0
-    while C == 0:
-        print(Style.BRIGHT + "Please, choose the board size between 3 and 30:")
-        board_size = input()
-        try:
-            board_size = int(board_size)
-            if board_size in range(3, 31):
-                C = 1
-            else:
-                print("The size is out of the limit.")
-        except ValueError:
-            print("Sorry, wrong character! Enter a number between 3 and 30.")
+    board_size = get_board_size()
     rows = game_board(board_size)
     player1 = input("Player 1, please enter your name: ")
     C = 0
@@ -112,9 +102,14 @@ while new_game == True:
             board(rows, board_size, color1, color2)
             print('The game is tie!!')
             win = True
+
     play_again = input("Do you want Play Again? y/n ")
     if play_again == 'n':
         new_game = False
+    else:
+        new_game = True
+        print("starting new game...")
+
 
 print(Style.RESET_ALL + '')
 exit()
