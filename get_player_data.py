@@ -5,7 +5,6 @@ def get_player_name(player):
 
 
 def get_player_color():
-    return_value = -1
     while True:
         print("Please, choose a colour(blue, yellow, red, green, cyan, magenta): ")
         color_name = input().upper()
