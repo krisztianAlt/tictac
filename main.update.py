@@ -34,6 +34,7 @@ while new_game == True:
             color1 = get_computer_color()
             player2 = get_player_name("Player 2")
             color2 = get_player_color()
+            opponent_char = 'O'
         else:
             print("Computer is the second Player")
             player1 = get_player_name("Player 1")
@@ -41,6 +42,7 @@ while new_game == True:
             player2 = "Computer"
             color2 = get_computer_color()
             computer_first = False
+            opponent_char = 'X'
     else:
         player1 = get_player_name("Player 1")
         color1 = get_player_color()
@@ -55,7 +57,7 @@ while new_game == True:
             if computer_first == True:
                 if player_turn == True:
                     print(player1)
-                    x, y = get_computer_coordinates(rows, board_size)
+                    x, y = get_computer_coordinates(rows, board_size, opponent_char)
                     player_turn = False
                     if fill_field(rows, x, y, player1, player1) == False:
                         player_turn = True
@@ -77,7 +79,7 @@ while new_game == True:
 
                 else:
                     print(player2)
-                    x, y = get_computer_coordinates(rows, board_size)
+                    x, y = get_computer_coordinates(rows, board_size, opponent_char)
                     player_turn = True
                     if fill_field(rows, x, y, player2, player1) == False:
                         player_turn = False

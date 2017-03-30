@@ -3,8 +3,92 @@ import random
 import time
 
 
-def get_computer_coordinates(rows, board_size):
+def get_computer_coordinates(rows, board_size, opponent_char):
     if (board_size == 3) or (board_size == 4):
+        if opponent_char == 'O':
+            for row_index in range(0, board_size):
+                if rows[row_index] == ['O', '_', 'O']:
+                    return row_index+1, 2
+                if rows[row_index] == ['O', 'O', '_']:
+                    return row_index+1, 3
+                if rows[row_index] == ['_', 'O', 'O']:
+                    return row_index+1, 1
+            
+            for row_item in range(0, board_size):
+                coloumn = []
+                for row_index in range(0, board_size):
+                    coloumn.append(rows[row_index][row_item])
+                if coloumn == ['O', '_', 'O']:
+                    return 2, row_item+1
+                if coloumn == ['O', 'O', '_']:
+                    return 3, row_item+1
+                if coloumn == ['_', 'O', 'O']:
+                    return 1, row_item+1
+            
+            diagonal_left = []
+            for index in range(0, board_size):
+                diagonal_left.append(rows[index][index])
+            if diagonal_left == ['O', '_', 'O']:
+                    return 2, 2
+            if diagonal_left == ['O', 'O', '_']:
+                    return 3, 3
+            if diagonal_left == ['_', 'O', 'O']:
+                    return 1, 1
+        
+            diagonal_right = []
+            y_koord = board_size - 1
+            for row_index in range(0, board_size):
+                diagonal_right.append(rows[row_index][y_koord])
+                y_koord = y_koord - 1
+            if diagonal_right == ['O', '_', 'O']:
+                    return 2, 2
+            if diagonal_right == ['O', 'O', '_']:
+                    return 3, 1
+            if diagonal_right == ['_', 'O', 'O']:
+                    return 1, 3
+
+        elif opponent_char == 'X':
+            for row_index in range(0, board_size):
+                if rows[row_index] == ['X', '_', 'X']:
+                    return row_index+1, 2
+                if rows[row_index] == ['X', 'X', '_']:
+                    return row_index+1, 3
+                if rows[row_index] == ['_', 'X', 'X']:
+                    return row_index+1, 1
+                
+            for row_item in range(0, board_size):
+                coloumn = []
+                for row_index in range(0, board_size):
+                    coloumn.append(rows[row_index][row_item])
+                if coloumn == ['X', '_', 'X']:
+                    return 2, row_item+1
+                if coloumn == ['X', 'X', '_']:
+                    return 3, row_item+1
+                if coloumn == ['_', 'X', 'X']:
+                    return 1, row_item+1
+                
+            diagonal_left = []
+            for index in range(0, board_size):
+                diagonal_left.append(rows[index][index])
+            if diagonal_left == ['X', '_', 'X']:
+                    return 2, 2
+            if diagonal_left == ['X', 'X', '_']:
+                    return 3, 3
+            if diagonal_left == ['_', 'X', 'X']:
+                    return 1, 1
+            
+            diagonal_right = []
+            y_koord = board_size - 1
+            for row_index in range(0, board_size):
+                diagonal_right.append(rows[row_index][y_koord])
+                y_koord = y_koord - 1
+            if diagonal_right == ['X', '_', 'X']:
+                    return 2, 2
+            if diagonal_right == ['X', 'X', '_']:
+                    return 3, 1
+            if diagonal_right == ['_', 'X', 'X']:
+                    return 1, 3
+
         for row_index in range(0, board_size):
             if (
                 rows[row_index] == ['X', '_', 'X'] or rows[row_index] == ['O', '_', 'O'] or
