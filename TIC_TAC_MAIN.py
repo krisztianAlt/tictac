@@ -14,9 +14,9 @@ from computer import *
 
 new_game = True
 os.system('clear')
-human_vs_computer = False
 
 while new_game == True:
+    human_vs_computer = False
     board_size = get_board_size()
     rows = game_board(board_size)
     computer_first = True
