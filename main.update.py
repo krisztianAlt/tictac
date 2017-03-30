@@ -21,12 +21,13 @@ while new_game == True:
     board_size = get_board_size()
     rows = game_board(board_size)
     computer_first = True
-
+    two_human = True
     if board_size == 3:
         game_type_choice = get_game_type_choice()
         if game_type_choice == True:
             print("Who should be the first player? If Computer/1, if Human/anything else")
             game_order = input()
+            two_human = False
             if game_order == "1":
                 print("Computer is the first Player")
                 player1 = "Computer"
@@ -42,12 +43,8 @@ while new_game == True:
                 color2 = get_computer_color(color1)
                 computer_first = False
                 opponent_char = 'X'
-        else:
-            player1 = get_player_name("Player 1")
-            color1 = get_player_color()
-            player2 = get_player_name("Player 2")
-            color2 = get_player_color()
-    else:
+
+    if two_human == True:
         player1 = get_player_name("Player 1")
         color1 = get_player_color()
         player2 = get_player_name("Player 2")

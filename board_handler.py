@@ -16,5 +16,5 @@ def get_board_size():
             else:
                 print("The size is out of the limit.")
         except ValueError:
-            print("Sorry, wrong character! Enter a number between 3 and 30.")
+            print("Sorry, wrong character! Enter 3 (Tic-Tac-Toe) or a number from 5 to 30 (Amoeba).")
     return return_value
