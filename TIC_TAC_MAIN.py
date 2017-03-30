@@ -14,7 +14,7 @@ from computer import *
 
 new_game = True
 os.system('clear')
-game_type_choice = False
+human_vs_computer = False
 
 while new_game == True:
     board_size = get_board_size()
@@ -22,8 +22,8 @@ while new_game == True:
     computer_first = True
     two_human = True
     if board_size == 3:
-        game_type_choice = get_game_type_choice()
-        if game_type_choice == True:
+        human_vs_computer = get_game_type_choice()
+        if human_vs_computer == True:
             print("Who should be the first player? If Computer/1, if Human/anything else")
             game_order = input()
             two_human = False
@@ -52,7 +52,7 @@ while new_game == True:
     win = False
     player_turn = True
     while win == False:
-        if game_type_choice == True:
+        if human_vs_computer == True:
             board(rows, board_size, color1, color2)
             if computer_first == True:
                 if player_turn == True:
