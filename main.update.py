@@ -10,7 +10,7 @@ from game_type_choice import get_game_type_choice
 from get_coordinate import *
 from get_player_data import *
 from get_computer_coordinate import *
-from computer_check import *
+from computer import *
 
 
 new_game = True
@@ -55,9 +55,7 @@ while new_game == True:
             if computer_first == True:
                 if player_turn == True:
                     print(player1)
-                    player = ()
-                    x = get_computer_x(board_size, rows)
-                    y = get_computer_y(board_size, rows)
+                    x, y = get_computer_coordinates(rows, board_size)
                     player_turn = False
                     if fill_field(rows, x, y, player1, player1) == False:
                         player_turn = True
@@ -79,8 +77,7 @@ while new_game == True:
 
                 else:
                     print(player2)
-                    x = get_x(board_size)
-                    y = get_y(board_size)
+                    x, y = get_computer_coordinates(rows, board_size)
                     player_turn = True
                     if fill_field(rows, x, y, player2, player1) == False:
                         player_turn = False
@@ -121,7 +118,7 @@ while new_game == True:
         new_game = False
     else:
         new_game = True
-        print("starting new game...")
+        print("Starting new game...")
 
 
 print(Style.RESET_ALL + '')
