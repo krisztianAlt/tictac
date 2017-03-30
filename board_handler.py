@@ -2,7 +2,6 @@ from colorama import Fore, Style
 
 
 def get_board_size():
-
     return_value = -1
     while True:
         print(Style.BRIGHT + "Please, choose the board size:")

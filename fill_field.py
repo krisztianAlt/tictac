@@ -1,5 +1,3 @@
-import time
-
 
 def fill_field(rows, x, y, player, player1):
     if rows[x - 1][y - 1] == '_':

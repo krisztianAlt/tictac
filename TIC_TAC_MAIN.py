@@ -9,7 +9,6 @@ from board_handler import get_board_size
 from game_type_choice import get_game_type_choice
 from get_coordinate import *
 from get_player_data import *
-from get_computer_coordinate import *
 from computer import *
 
 
