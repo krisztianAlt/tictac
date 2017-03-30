@@ -9,6 +9,8 @@ from board_handler import get_board_size
 from game_type_choice import get_game_type_choice
 from get_coordinate import *
 from get_player_data import *
+from get_computer_coordinate import *
+from computer_check import *
 
 
 new_game = True
@@ -16,7 +18,6 @@ os.system('clear')
 game_type_choice = False
 
 while new_game == True:
-
     board_size = get_board_size()
     rows = game_board(board_size)
     computer_first = True
@@ -25,7 +26,7 @@ while new_game == True:
 
     game_type_choice = get_game_type_choice()
     if game_type_choice == True:
-        print("Who should be the first player? if computer enter 1, anything else human be the first")
+        print("Who should be the first player? If Computer/1, if Human/anything else")
         game_order = input()
         if game_order == "1":
             print("Computer is the first Player")
@@ -54,8 +55,9 @@ while new_game == True:
             if computer_first == True:
                 if player_turn == True:
                     print(player1)
-                    x = get_x(board_size)
-                    y = get_y(board_size)
+                    player = ()
+                    x = get_computer_x(board_size, rows)
+                    y = get_computer_y(board_size, rows)
                     player_turn = False
                     if fill_field(rows, x, y, player1, player1) == False:
                         player_turn = True
