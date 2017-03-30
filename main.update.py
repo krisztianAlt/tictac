@@ -21,28 +21,32 @@ while new_game == True:
     board_size = get_board_size()
     rows = game_board(board_size)
     computer_first = True
-    computer = ()
-    human = ()
 
-    game_type_choice = get_game_type_choice()
-    if game_type_choice == True:
-        print("Who should be the first player? If Computer/1, if Human/anything else")
-        game_order = input()
-        if game_order == "1":
-            print("Computer is the first Player")
-            player1 = "Computer"
-            color1 = get_computer_color()
-            player2 = get_player_name("Player 2")
-            color2 = get_player_color()
-            opponent_char = 'O'
+    if board_size == 3:
+        game_type_choice = get_game_type_choice()
+        if game_type_choice == True:
+            print("Who should be the first player? If Computer/1, if Human/anything else")
+            game_order = input()
+            if game_order == "1":
+                print("Computer is the first Player")
+                player1 = "Computer"
+                player2 = get_player_name("Player 2")
+                color2 = get_player_color()
+                color1 = get_computer_color(color2)
+                opponent_char = 'O'
+            else:
+                print("Computer is the second Player")
+                player1 = get_player_name("Player 1")
+                color1 = get_player_color()
+                player2 = "Computer"
+                color2 = get_computer_color(color1)
+                computer_first = False
+                opponent_char = 'X'
         else:
-            print("Computer is the second Player")
             player1 = get_player_name("Player 1")
             color1 = get_player_color()
-            player2 = "Computer"
-            color2 = get_computer_color()
-            computer_first = False
-            opponent_char = 'X'
+            player2 = get_player_name("Player 2")
+            color2 = get_player_color()
     else:
         player1 = get_player_name("Player 1")
         color1 = get_player_color()
@@ -60,6 +64,8 @@ while new_game == True:
                     x, y = get_computer_coordinates(rows, board_size, opponent_char)
                     player_turn = False
                     if fill_field(rows, x, y, player1, player1) == False:
+                        print("Computer is thinking...")
+                        time.sleep(2)
                         player_turn = True
                 else:
                     print(player2)
@@ -67,6 +73,8 @@ while new_game == True:
                     y = get_y(board_size)
                     player_turn = True
                     if fill_field(rows, x, y, player2, player1) == False:
+                        print("Sorry the field is reserved!")
+                        time.sleep(2)
                         player_turn = False
             else:
                 if player_turn == True:
@@ -75,6 +83,8 @@ while new_game == True:
                     y = get_y(board_size)
                     player_turn = False
                     if fill_field(rows, x, y, player1, player1) == False:
+                        print("Sorry the field is reserved!")
+                        time.sleep(2)
                         player_turn = True
 
                 else:
@@ -82,6 +92,8 @@ while new_game == True:
                     x, y = get_computer_coordinates(rows, board_size, opponent_char)
                     player_turn = True
                     if fill_field(rows, x, y, player2, player1) == False:
+                        print("Computer is thinking...")
+                        time.sleep(2)
                         player_turn = False
 
         else:
@@ -92,6 +104,8 @@ while new_game == True:
                 y = get_y(board_size)
                 player_turn = False
                 if fill_field(rows, x, y, player1, player1) == False:
+                    print("Sorry the field is reserved!")
+                    time.sleep(2)
                     player_turn = True
             else:
                 print(player2)
@@ -99,6 +113,8 @@ while new_game == True:
                 y = get_y(board_size)
                 player_turn = True
                 if fill_field(rows, x, y, player2, player1) == False:
+                    print("Sorry the field is reserved!")
+                    time.sleep(2)
                     player_turn = False
 
         check_win_answer = check_win(rows, board_size)

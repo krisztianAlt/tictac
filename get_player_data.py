@@ -1,5 +1,5 @@
 import random
-stored_player_color = ()
+import time
 
 
 def get_player_name(player):
@@ -14,17 +14,16 @@ def get_player_color():
         color_name = input().upper()
         if color_name in ['BLUE', 'YELLOW', 'RED', 'GREEN', 'CYAN', 'MAGENTA']:
             return_value = color_name
-            stored_player_color = color_name
             break
         else:
             print("Please, choose a right colour!")
     return return_value
 
 
-def get_computer_color():
-    return_value = ()
+def get_computer_color(player_color):
+    return_value = player_color
     color_name = ['BLUE', 'YELLOW', 'RED', 'GREEN', 'CYAN', 'MAGENTA']
-    while stored_player_color == return_value:
+    while player_color == return_value:
         return_value = random.choice(color_name)
     return return_value
 
